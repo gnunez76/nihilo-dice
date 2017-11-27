@@ -108,6 +108,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
+
                 <div class="col-md-12 lanzardados" id="tiradanormal" style="line-height: 1; !important;">
                     <span id="resultadotirada" class="font-green" style="font-family: DTwenty; font-size: 280px; margin-left: 35px;"> W </span>
                 </div>
@@ -121,14 +122,12 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 </div>
 
-                <div class="col-md-12" id="exitos" style="margin-top: -94px;">
+
+                <div class="col-md-12" id="exitos" style="margin-top: -93px;">
                     <span class="badge badge-default pull-center"> 1 </span>
                     <span class="badge badge-default pull-center"> 2 </span>
                     <span class="badge badge-default pull-center"> 3 </span>
-
-                </div>
-
-                <div class="col-md-12" id="exitos" style="margin-top: -72px;">
+                    <br>
                     <span class="badge badge-default pull-center"> 4 </span>
                     <span class="badge badge-default pull-center"> 5 </span>
                 </div>
@@ -222,7 +221,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
             var count = 1;
             limpiarGrados();
-            $('#exitos').children().each(function () {
+            $('#exitos').find('span').each(function () {
 
                 if (count <= num) {
                     $(this).removeClass('badge-default').addClass('badge-warning');
@@ -235,7 +234,7 @@ License: You must have a valid license purchased only from themeforest(the above
     }
 
     function limpiarGrados () {
-        $('#exitos').children().each(function () {
+        $('#exitos').find('span').each(function () {
             $(this).removeClass('badge-warning').addClass('badge-default');
         });
     }
