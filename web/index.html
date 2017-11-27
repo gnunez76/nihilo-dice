@@ -20,7 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
     <meta charset="utf-8" />
-    <title>Metronic | General Components</title>
+    <title>Nihilo</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -58,19 +58,19 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <body class="">
 <!-- BEGIN HEADER -->
-<header class="page-header">
-    <nav class="navbar" role="navigation">
-        <div class="container-fluid">
-            <div class="havbar-header">
-                <!-- BEGIN LOGO -->
-                <a id="index" class="navbar-brand" href="start.html">
-                    <img src="/assets/layouts/layout6/img/logo.png" alt="Logo"> </a>
-                <!-- END LOGO -->
-            </div>
-        </div>
-        <!--/container-->
-    </nav>
-</header>
+<!--<header class="page-header">-->
+    <!--<nav class="navbar" role="navigation">-->
+        <!--<div class="container-fluid">-->
+            <!--<div class="havbar-header">-->
+                <!--&lt;!&ndash; BEGIN LOGO &ndash;&gt;-->
+                <!--<a id="index" class="navbar-brand" href="start.html">-->
+                    <!--<img src="/assets/layouts/layout6/img/logo.png" alt="Logo"> </a>-->
+                <!--&lt;!&ndash; END LOGO &ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;/container&ndash;&gt;-->
+    <!--</nav>-->
+<!--</header>-->
 <!-- END HEADER -->
 <!-- BEGIN CONTAINER -->
 <div class="container-fluid">
@@ -87,9 +87,19 @@ License: You must have a valid license purchased only from themeforest(the above
                     <span class="badge badge-default pull-center"> 4 </span>
                     <span class="badge badge-default pull-center"> 5 </span>
                 </div>
-                <div class="col-md-12 text-center">
-                    <span id="resultadotirada" class="font-green" style="font-family: DTwenty; font-size: 250px; margin-left: 30px;"> W </span>
+
+                <div class="col-md-12 lanzardados" id="tiradanormal" style="line-height: 1; !important;">
+                    <span id="resultadotirada" class="font-green" style="font-family: DTwenty; font-size: 250px; margin-left: 35px;"> W </span>
                 </div>
+                <div class="col-md-12 lanzardados" id="tiradaespecial" style="display: none;">
+                    <div class="col-md-6 text-right" style="line-height: 1; !important;">
+                        <span id="resultadotirada1" class="font-red" style="font-family: DTwenty; font-size: 120px;"> W </span>
+                    </div>
+                    <div class="col-md-6 text-left" style="line-height: 1; !important;">
+                        <span id="resultadotirada2" class="font-green" style="font-family: DTwenty; font-size: 250px;"> W </span>
+                    </div>
+                </div>
+
                 <div class="col-md-12">
 
                     <!--<h1 style="font-family: DTwenty; font-size: 60px;">0123456789</h1>-->
@@ -98,9 +108,18 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--<h1 style="font-family: DTwenty; font-size: 60px;">)!?#$%^&*(</h1>-->
                     <!--<h1 style="font-family: DTwenty; font-size: 60px;">JKLMNOPQRST</h1>-->
 
+                    <div class="clearfix">
+
+                        <a href="javascript:;" id="ventaja" data-active="false" class="btn btn-icon-only default">
+                            <i class="fa fa-thumbs-o-up"></i>
+                        </a>
+                        <a href="javascript:;" id="desventaja" data-active="false" class="btn btn-icon-only default">
+                            <i class="fa fa-thumbs-o-down"></i>
+                        </a>
+                    </div>
 
 
-                    <button type="button" class="btn btn-lg btn-circle green btn-outline" id="rolldice"><span style="font-family: DTwenty;"> w</span> Lanzar </button>
+                    <!--<button type="button" class="btn btn-lg btn-circle green btn-outline" id="rolldice"><span style="font-family: DTwenty;"> w</span> Lanzar </button>-->
 
                 </div>
             </div>
@@ -112,11 +131,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--</p>-->
         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
 
-        <!-- END QUICK SIDEBAR TOGGLER -->
-        <a href="#index" class="go2top">
-            <i class="icon-arrow-up"></i>
-        </a>
-        <!-- END FOOTER -->
+
     </div>
 </div>
 <!-- END CONTAINER -->
@@ -209,41 +224,88 @@ License: You must have a valid license purchased only from themeforest(the above
     }
 
     function resultadoDados () {
-        var result = dice.roll();
-        console.log(result);
-        $('#resultadotirada').html(sidesSolid[result]);
-        exito.grado(gradoExito[result]);
+
+        var result = dice.roll(), grado;
+        if ($('#ventaja').attr('data-active') == 'false' && $('#desventaja').attr('data-active') == 'false') {
+
+            $('#resultadotirada').html(sidesSolid[result]);
+            grado = gradoExito[result];
+        }
+        else {
+            var result2 = dice.roll(), mayor, menor;
+
+            if (result > result2) {
+                mayor = result;
+                menor = result2;
+            }
+            else {
+                mayor = result2;
+                menor = result;
+            }
+
+            if ($('#ventaja').attr('data-active') == 'true') {
+                $('#resultadotirada1').html(sidesSolid[mayor]);
+                $('#resultadotirada2').html(sidesSolid[menor]);
+                grado = gradoExito[menor];
+            }
+            else {
+                $('#resultadotirada1').html(sidesSolid[menor]);
+                $('#resultadotirada2').html(sidesSolid[mayor]);
+                grado = gradoExito[mayor];
+            }
+        }
+
+
+        exito.grado(grado);
     }
 
-//
-//
-//
-//    //Prints dice roll to the page
-//
-//    function printNumber(number) {
-//        var placeholder = document.getElementById('placeholder');
-//        placeholder.innerHTML = number;
-//    }
-//
-//    var button = document.getElementById('button');
-//
-//    button.onclick = function() {
-//        var result = dice.roll();
-//        printNumber(result);
-//    };
+    function ventajaDesventaja (obj, opcion) {
+        if (obj.attr('data-active') == 'true') {
+            obj.attr('data-active', 'false');
+            obj.removeClass('green').addClass('default');
+        }
+        else {
+            obj.attr('data-active', 'true');
+            obj.removeClass('default').addClass('green');
+            opcion.removeClass('green').addClass('default');
+            opcion.attr('data-active', 'false');
+        }
+
+        if (obj.attr('data-active') == 'false' && opcion.attr('data-active') == 'false') {
+            $("#tiradaespecial").css('display', 'none');
+            $("#tiradanormal").css('display', 'block');
+            $("#resultadotirada").html('W');
+        }
+        else {
+            $("#tiradanormal").css('display', 'none');
+            $("#tiradaespecial").css('display', 'block');
+            $('#resultadotirada1').html('W');
+            $('#resultadotirada2').html('W');
+        }
+    }
 
     $(document).ready (function () {
 
 
-        $('#resultadotirada').click(function (event) {
+        $('.lanzardados').click(function (event) {
             event.preventDefault();
             resultadoDados();
         });
 
 
-        $('#rolldice').click(function (event) {
+//        $('#rolldice').click(function (event) {
+//            event.preventDefault();
+//            resultadoDados();
+//        });
+
+        $('#ventaja').click(function (event) {
             event.preventDefault();
-            resultadoDados();
+            ventajaDesventaja($(this), $('#desventaja'));
+        });
+
+        $('#desventaja').click(function (event) {
+            event.preventDefault();
+            ventajaDesventaja($(this), $('#ventaja'));
         });
 
     });
