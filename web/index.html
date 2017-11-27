@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!--<div class="havbar-header">-->
                 <!--&lt;!&ndash; BEGIN LOGO &ndash;&gt;-->
                 <!--<a id="index" class="navbar-brand" href="start.html">-->
-                    <!--<img src="/assets/layouts/layout6/img/logo.png" alt="Logo"> </a>-->
+                    <!--<img src="/img/logo.png" alt="Logo"> </a>-->
                 <!--&lt;!&ndash; END LOGO &ndash;&gt;-->
             <!--</div>-->
         <!--</div>-->
@@ -83,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 <div class="row text-center" style="margin-bottom: 20px;">
                     <div class="col-md-12">
-
+                        <img src="/img/logo.png" alt="Logo" width="200px;">
                         <!--<h1 style="font-family: DTwenty; font-size: 60px;">0123456789</h1>-->
                         <!--<h1 style="font-family: DTwenty; font-size: 60px;">jklmnopqrst</h1>-->
 
@@ -110,7 +110,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                 <div class="col-md-12 lanzardados" id="tiradanormal" style="line-height: 1; !important;">
-                    <span id="resultadotirada" class="font-green" style="font-family: DTwenty; font-size: 280px; margin-left: 35px;"> W </span>
+                    <span id="resultadotirada" class="font-default" style="font-family: DTwenty; font-size: 280px; margin-left: 35px;"> W </span>
                 </div>
                 <div class="col-md-12 lanzardados" id="tiradaespecial" style="display: none;">
                     <!--<div class="col-md-6 text-left" style="line-height: 1; !important;">-->
@@ -224,7 +224,7 @@ License: You must have a valid license purchased only from themeforest(the above
             $('#exitos').find('span').each(function () {
 
                 if (count <= num) {
-                    $(this).removeClass('badge-default').addClass('badge-warning');
+                    $(this).removeClass('badge-default').addClass('badge-success');
                     console.log(count);
                 }
                 count++;
@@ -235,7 +235,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     function limpiarGrados () {
         $('#exitos').find('span').each(function () {
-            $(this).removeClass('badge-warning').addClass('badge-default');
+            $(this).removeClass('badge-success').addClass('badge-default');
         });
     }
 
