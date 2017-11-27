@@ -74,12 +74,38 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END HEADER -->
 <!-- BEGIN CONTAINER -->
 <div class="container-fluid">
-    <div class="page-content page-content-popup">
+    <div class="page-content page-content-popup" style="height: 100vh;">
 
 
         <div class="page-fixed-main-content" style="margin-left: 0px;">
             <!-- BEGIN PAGE BASE CONTENT -->
             <div class="row text-center">
+
+                <div class="row text-center" style="margin-bottom: 20px;">
+                    <div class="col-md-12">
+
+                        <!--<h1 style="font-family: DTwenty; font-size: 60px;">0123456789</h1>-->
+                        <!--<h1 style="font-family: DTwenty; font-size: 60px;">jklmnopqrst</h1>-->
+
+                        <!--<h1 style="font-family: DTwenty; font-size: 60px;">)!?#$%^&*(</h1>-->
+                        <!--<h1 style="font-family: DTwenty; font-size: 60px;">JKLMNOPQRST</h1>-->
+
+                        <div class="clearfix">
+
+                            <a href="javascript:;" id="ventaja" data-active="false" class="btn btn-icon-only default">
+                                <i class="fa fa-thumbs-o-up"></i>
+                            </a>
+                            <a href="javascript:;" id="desventaja" data-active="false" class="btn btn-icon-only default">
+                                <i class="fa fa-thumbs-o-down"></i>
+                            </a>
+                        </div>
+
+
+                        <!--<button type="button" class="btn btn-lg btn-circle green btn-outline" id="rolldice"><span style="font-family: DTwenty;"> w</span> Lanzar </button>-->
+
+                    </div>
+                </div>
+
                 <div class="col-md-12" id="exitos">
                     <span class="badge badge-default pull-center"> 1 </span>
                     <span class="badge badge-default pull-center"> 2 </span>
@@ -92,37 +118,19 @@ License: You must have a valid license purchased only from themeforest(the above
                     <span id="resultadotirada" class="font-green" style="font-family: DTwenty; font-size: 280px; margin-left: 35px;"> W </span>
                 </div>
                 <div class="col-md-12 lanzardados" id="tiradaespecial" style="display: none;">
-                    <div class="col-md-6 text-right" style="line-height: 1; !important;">
-                        <span id="resultadotirada1" class="font-red" style="font-family: DTwenty; font-size: 100px;"> W </span>
-                    </div>
-                    <div class="col-md-6 text-left" style="line-height: 0.7; !important;">
-                        <span id="resultadotirada2" class="font-green" style="font-family: DTwenty; font-size: 243px;"> W </span>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-
-                    <!--<h1 style="font-family: DTwenty; font-size: 60px;">0123456789</h1>-->
-                    <!--<h1 style="font-family: DTwenty; font-size: 60px;">jklmnopqrst</h1>-->
-
-                    <!--<h1 style="font-family: DTwenty; font-size: 60px;">)!?#$%^&*(</h1>-->
-                    <!--<h1 style="font-family: DTwenty; font-size: 60px;">JKLMNOPQRST</h1>-->
-
-                    <div class="clearfix">
-
-                        <a href="javascript:;" id="ventaja" data-active="false" class="btn btn-icon-only default">
-                            <i class="fa fa-thumbs-o-up"></i>
-                        </a>
-                        <a href="javascript:;" id="desventaja" data-active="false" class="btn btn-icon-only default">
-                            <i class="fa fa-thumbs-o-down"></i>
-                        </a>
-                    </div>
-
-
-                    <!--<button type="button" class="btn btn-lg btn-circle green btn-outline" id="rolldice"><span style="font-family: DTwenty;"> w</span> Lanzar </button>-->
+                    <!--<div class="col-md-6 text-left" style="line-height: 1; !important;">-->
+                        <span id="resultadotirada2" class="font-green" style="font-family: DTwenty; font-size: 200px;"> W </span>
+                    <!--</div>-->
+                    <!--<div class="col-md-6 text-right" style="line-height: 0; !important;">-->
+                        <span id="resultadotirada1" class="font-red" style="font-family: DTwenty; font-size: 80px;"> W </span>
+                    <!--</div>-->
 
                 </div>
+
+
             </div>
+
+
             <!-- END PAGE BASE CONTENT -->
         </div>
         <!-- BEGIN FOOTER -->
@@ -207,10 +215,7 @@ License: You must have a valid license purchased only from themeforest(the above
         grado: function (num) {
 
             var count = 1;
-            $('#exitos').children().each(function () {
-                $(this).removeClass('badge-success').addClass('badge-default');
-            });
-
+            limpiarGrados();
             $('#exitos').children().each(function () {
 
                 if (count <= num) {
@@ -221,6 +226,12 @@ License: You must have a valid license purchased only from themeforest(the above
             });
 
         }
+    }
+
+    function limpiarGrados () {
+        $('#exitos').children().each(function () {
+            $(this).removeClass('badge-success').addClass('badge-default');
+        });
     }
 
     function resultadoDados () {
@@ -260,6 +271,9 @@ License: You must have a valid license purchased only from themeforest(the above
     }
 
     function ventajaDesventaja (obj, opcion) {
+
+        limpiarGrados();
+
         if (obj.attr('data-active') == 'true') {
             obj.attr('data-active', 'false');
             obj.removeClass('green').addClass('default');
