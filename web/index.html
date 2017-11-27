@@ -74,7 +74,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END HEADER -->
 <!-- BEGIN CONTAINER -->
 <div class="container-fluid">
-    <div class="page-content page-content-popup" style="height: 94vh;">
+    <!--<div class="page-content page-content-popup" style="height: 94vh;">-->
 
 
         <div class="page-fixed-main-content" style="margin-left: 0px;">
@@ -106,13 +106,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                 </div>
 
-                <div class="col-md-12" id="exitos">
-                    <span class="badge badge-default pull-center"> 1 </span>
-                    <span class="badge badge-default pull-center"> 2 </span>
-                    <span class="badge badge-default pull-center"> 3 </span>
-                    <span class="badge badge-default pull-center"> 4 </span>
-                    <span class="badge badge-default pull-center"> 5 </span>
-                </div>
+
 
                 <div class="col-md-12 lanzardados" id="tiradanormal" style="line-height: 1; !important;">
                     <span id="resultadotirada" class="font-green" style="font-family: DTwenty; font-size: 280px; margin-left: 35px;"> W </span>
@@ -125,6 +119,18 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span id="resultadotirada1" class="font-red" style="font-family: DTwenty; font-size: 80px;"> W </span>
                     <!--</div>-->
 
+                </div>
+
+                <div class="col-md-12" id="exitos" style="margin-top: -94px;">
+                    <span class="badge badge-default pull-center"> 1 </span>
+                    <span class="badge badge-default pull-center"> 2 </span>
+                    <span class="badge badge-default pull-center"> 3 </span>
+
+                </div>
+
+                <div class="col-md-12" id="exitos" style="margin-top: -72px;">
+                    <span class="badge badge-default pull-center"> 4 </span>
+                    <span class="badge badge-default pull-center"> 5 </span>
                 </div>
 
 
@@ -140,7 +146,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
 
 
-    </div>
+    <!--</div>-->
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN QUICK SIDEBAR -->
@@ -219,7 +225,7 @@ License: You must have a valid license purchased only from themeforest(the above
             $('#exitos').children().each(function () {
 
                 if (count <= num) {
-                    $(this).removeClass('badge-default').addClass('badge-success');
+                    $(this).removeClass('badge-default').addClass('badge-warning');
                     console.log(count);
                 }
                 count++;
@@ -230,7 +236,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     function limpiarGrados () {
         $('#exitos').children().each(function () {
-            $(this).removeClass('badge-success').addClass('badge-default');
+            $(this).removeClass('badge-warning').addClass('badge-default');
         });
     }
 
